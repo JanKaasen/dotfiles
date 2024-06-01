@@ -9,7 +9,6 @@ This directory contains the dorfiles for my system
 
 ```
 pacman -S git
-
 ```
 
 ### Stow
