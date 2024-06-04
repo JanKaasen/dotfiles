@@ -7,16 +7,28 @@ This directory contains the dorfiles for my system
 
 ### Git
 
+#### Arch
 ```
 pacman -S git
 ```
 
+#### macOS
+
+```
+brew install git
+```
 ### Stow
 
+#### Arch
 ```
 pacman -S stow
 ```
 
+#### macOS
+
+```
+brew install stow
+```
 ## Installation
 
 ```
