@@ -1,6 +1,7 @@
 # My dotfiles
 
-This directory contains the dorfiles for my system
+This directory contains the dotfiles for my system
+
 
 
 ## Dependencies 
