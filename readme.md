@@ -9,7 +9,7 @@ Shell: Zsh  \
 Window manager: i3  \
 Compositor: picom   \
 Bar: polybar \
-App launcher: Rofi \
+App launcher: Rofi
 
 ## Dependencies 
 
