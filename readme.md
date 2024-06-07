@@ -4,12 +4,12 @@ This directory contains the dotfiles for my system
 
 ## Programs used
 
-Terminal: Alacritty
-Shell: Zsh
-Window manager: i3
-Compositor: picom
-Bar: polybar
-App launcher: Rofi
+Terminal: Alacritty \
+Shell: Zsh  \
+Window manager: i3  \
+Compositor: picom   \
+Bar: polybar \
+App launcher: Rofi \
 
 ## Dependencies 
 
