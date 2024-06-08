@@ -10,6 +10,6 @@ decorations = "None"
 dynamic_padding = true
 
 [font]
-normal.family = "DroidSansM Nerd Font Mono"
+normal.family = "JetBrainsMono Nerd Font"
 size = 14
 
