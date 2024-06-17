@@ -205,6 +205,7 @@ exec_always --no-startup-id feh --bg-fill ~/Pictures/5amtrain.jpg
 exec_always --no-startup-id ~/.screenlayout/screenlayout.sh
 exec_always --no-startup-id picom
 exec --no-startup-id rclone --vfs-cache-mode writes mount OneDrive: ~/OneDrive
+exec --no-startup.id nvidia-settings --load-config-only
 
 # Screenshot keybind
 bindsym Shift+$mod+s exec flameshot gui
