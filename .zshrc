@@ -21,3 +21,5 @@ export PATH=/home/jan/.cargo/bin:$PATH
 export PATH=/home/jan/.local/bin:$PATH
 eval "$(starship init zsh)"
 
+
+[ -f "/home/jan/.ghcup/env" ] && . "/home/jan/.ghcup/env" # ghcup-env
