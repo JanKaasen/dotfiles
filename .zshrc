@@ -20,6 +20,7 @@ export NVM_DIR="$HOME/.nvm"
 export PATH=/home/jan/.cargo/bin:$PATH
 export PATH=/home/jan/.local/bin:$PATH
 eval "$(starship init zsh)"
+export PATH="$HOME/.cabal/bin:$PATH"
 
 
 [ -f "/home/jan/.ghcup/env" ] && . "/home/jan/.ghcup/env" # ghcup-env
