@@ -49,7 +49,7 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -155,7 +155,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -201,11 +201,11 @@ for_window [class="^.*"] border pixel 0
 # Startup commands
 exec_always --no-startup-id killall polybar
 exec_always --no-startup-id ~/.config/polybar/launch_polybar.sh 
-exec_always --no-startup-id feh --bg-fill ~/Pictures/5amtrain.jpg
+exec_always --no-startup-id feh --bg-fill ~/Pictures/rocket.png
 exec_always --no-startup-id ~/.screenlayout/screenlayout.sh
 exec_always --no-startup-id picom
 exec --no-startup-id rclone --vfs-cache-mode writes mount OneDrive: ~/OneDrive
 exec --no-startup.id nvidia-settings --load-config-only
 
 # Screenshot keybind
-bindsym Shift+$mod+s exec flameshot gui
+bindsym Shift+$mod+s exec --no-startup-id flameshot gui

@@ -1,5 +1,7 @@
 {
   "extras": [
+    "lazyvim.plugins.extras.editor.harpoon2",
+    "lazyvim.plugins.extras.lsp.neoconf",
     "lazyvim.plugins.extras.util.dot"
   ],
   "news": {
