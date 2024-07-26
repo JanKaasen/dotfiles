@@ -204,7 +204,7 @@ exec_always --no-startup-id ~/.config/polybar/launch_polybar.sh
 exec_always --no-startup-id feh --bg-fill ~/Pictures/rocket.png
 exec_always --no-startup-id ~/.screenlayout/screenlayout.sh
 exec_always --no-startup-id picom
-exec --no-startup-id rclone --vfs-cache-mode all mount OneDrive: ~/OneDrive
+exec --no-startup-id rclone --vfs-cache-mode full mount OneDrive: ~/OneDrive
 exec --no-startup.id nvidia-settings --load-config-only
 
 # Screenshot keybind
