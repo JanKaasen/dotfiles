@@ -4,7 +4,7 @@ This directory contains the dotfiles for my system
 
 ## Programs used
 
-Terminal: Alacritty \
+Terminal: Kitty \
 Shell: Zsh  \
 Window manager: i3  \
 Compositor: picom   \
