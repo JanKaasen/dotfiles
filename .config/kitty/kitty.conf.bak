@@ -6,10 +6,10 @@
 #: individual font faces and even specify special fonts for particular
 #: characters.
 
-# font_family      monospace
-# bold_font        auto
-# italic_font      auto
-# bold_italic_font auto
+ font_family MesloLGL Nerd Font Mono
+ bold_font        auto
+ italic_font      auto
+ bold_italic_font auto
 
 #: You can specify different fonts for the bold/italic/bold-italic
 #: variants. To get a full list of supported fonts use the `kitty
@@ -24,7 +24,7 @@
 #:     italic_font      Operator Mono Book Italic
 #:     bold_italic_font Operator Mono Medium Italic
 
-# font_size 11.0
+font_size 15
 
 #: Font size (in pts).
 
@@ -893,7 +893,7 @@
 #: Fade the text in inactive windows by the specified amount (a number
 #: between zero and one, with zero being fully faded).
 
-# hide_window_decorations no
+hide_window_decorations yes
 
 #: Hide the window decorations (title-bar and window borders) with
 #: yes. On macOS, titlebar-only and titlebar-and-corners can be used
@@ -1158,7 +1158,7 @@
 
 #: The foreground and background colors.
 
-# background_opacity 1.0
+background_opacity 1
 
 #: The opacity of the background. A number between zero and one, where
 #: one is opaque and zero is fully transparent. This will only work if
@@ -1182,7 +1182,7 @@
 #: this option when reloading the config will only work if
 #: dynamic_background_opacity was enabled in the original config.
 
-# background_blur 0
+background_blur 1
 
 #: Set to a positive value to enable background blur (blurring of the
 #: visuals behind a transparent window) on platforms that support it.
@@ -2527,3 +2527,9 @@
 #: }}}
 
 #: }}}
+
+
+# BEGIN_KITTY_THEME
+# Gruvbox Material Dark Soft
+include current-theme.conf
+# END_KITTY_THEME
