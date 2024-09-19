@@ -17,10 +17,10 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
 export PATH=/home/jan/.cargo/bin:$PATH
 export PATH=/home/jan/.local/bin:$PATH
 eval "$(starship init zsh)"
 export PATH="$HOME/.cabal/bin:$PATH"
-
-
+export PATH="$(brew --prefix)/opt/python@3/libexec/bin:$PATH"
 [ -f "/home/jan/.ghcup/env" ] && . "/home/jan/.ghcup/env" # ghcup-env
