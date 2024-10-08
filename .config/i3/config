@@ -199,10 +199,11 @@ for_window [class="^.*"] border pixel 0
 
 
 # Startup commands
+exec_always --no-startup-id xrandr --output DP-4 --scale 1.2x1.2
 exec_always --no-startup-id killall polybar
 exec_always --no-startup-id ~/.config/polybar/launch_polybar.sh 
 exec_always --no-startup-id feh --bg-fill ~/Pictures/rocket.png
-exec_always --no-startup-id ~/.screenlayout/screenlayout.sh
+exec_always --no-startup-id setxkbmap -layout eu
 exec_always --no-startup-id picom
 exec --no-startup-id rclone --vfs-cache-mode full mount OneDrive: ~/OneDrive
 exec --no-startup.id nvidia-settings --load-config-only
