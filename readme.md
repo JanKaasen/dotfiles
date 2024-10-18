@@ -49,3 +49,5 @@ then use GNU stow to create symlinks
 ```
 $ stow .
 ```
+
+Swaync and waybar config taken from https://github.com/mooncoffee1/MyHyprlandRice
