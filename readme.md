@@ -9,9 +9,9 @@ Shell: Zsh  \
 Window manager: i3  \
 Compositor: picom   \
 Bar: polybar \
-App launcher: Rofi
+App launcher: Wofi
 
-## Dependencies 
+## Dependencies
 
 ### Git
 
@@ -50,4 +50,5 @@ then use GNU stow to create symlinks
 $ stow .
 ```
 
-Swaync and waybar config taken from https://github.com/mooncoffee1/MyHyprlandRice
+Swaync config taken from https://github.com/mooncoffee1/MyHyprlandRice
+Waybar config from https://github.com/LoneWolf4713/seraphic.dotfiles/tree/main
