@@ -1,207 +1,140 @@
 {
-    "layer": "top", // Waybar at top layer
-    "position": "top", // Waybar position (top|bottom|left|right)
-    "height": 52, // Waybar height (to be removed for auto height)
-    // "width": 1280, // Waybar width
-    "spacing": 2, // Gaps between modules (4px)
-    // Choose the order of the modules
-    "margin-left":-10,
-    "margin-right":-10,
-   // "margin-bottom":-10,
-    "margin-top":-5,
-    "modules-left": ["hyprland/workspaces","custom/audio_idle_inhibitor"],
-    "modules-right": [ "tray", "pulseaudio" , "backlight","battery", "custom/notification", "clock"],
-    "modules-center": ["custom/waybar-mpris"],
-    // Modules configuration
-
-
-    "hyprland/workspaces": {
-        "format": "{name}"
+	"layer":"top",
+	"position":"bottom",
+	"reload_style_on_change":true,
+		
+	"height":20,
+	"margin-bottom":5,
+	"margin-left": 5,
+	"margin-right":5,
+	
+	"modules-left":["hyprland/workspaces","custom/lizzy"],
+	"modules-center":["clock"],
+	"modules-right":[
+		"custom/notification",
+		"network",
+		"backlight",
+		"wireplumber",
+		"clock#time",
+		"battery",
+		"custom/power"
+		],
+		
+		"hyprland/workspaces": {
+		    "all-outputs": true,
+		    "format": "{icon}",
+		    "format-icons": {
+		        "1": "✨",
+		        "2": "🌈",
+		        "3": "💕",
+		        "4": "🎄",
+		        "5": "🌊",
+		        "6": "🌷",
+		        "7": "🪷",
+		        "8": "😽",
+		        "9": "🌙",
+		        "10": "🦋",
+		    },
+		    "on-scroll-up": "hyprctl dispatch workspace e+1 1>/dev/null",
+		    "on-scroll-down": "hyprctl dispatch workspace e-1 1>/dev/null",
+		    "sort-by-number": true,
+		    "active-only": false,
     },
-
-    "hyprland/window": {
-        "max-length": 200,
-        "separate-outputs": true
-    },
-    
-    "hyprland/submap": {
-        "format": "✌️ {}",
-        "max-length": 8,
-        "tooltip": false
-    },
-
-    // custom modules //
-    "custom/cycle_wall":{
-        "format":"  󰊠  ",
-        // "interval": 1,
-        "on-click": "sleep 0.1; ~/.config/hypr/scripts/wall",
-        "tooltip": false
-
-    },
-
-    "custom/waybar-mpris": {
-        "return-type": "json",
-        "max-length": 40,
-        "exec": "waybar-mpris --position --autofocus --pause 󰏤 --play 󰐊",
-        "on-click": "sleep 0.1; waybar-mpris --send toggle",
-        // This option will switch between players on right click.
-            "on-click-right": "sleep 0.1; playerctl next",
-        // The options below will switch the selected player on scroll
-            // "on-scroll-up": "waybar-mpris --send player-next",
-            // "on-scroll-down": "waybar-mpris --send player-prev",
-        // The options below will go to next/previous track on scroll
-            // "on-scroll-up": "waybar-mpris --send next",
-            // "on-scroll-down": "waybar-mpris --send prev",
-        "escape": true,
-    },
-
-    "jack": {
-        "format": "DSP {}%",
-        "format-xrun": "{xruns} xruns",
-        "format-disconnected": "DSP off",
-        "realtime": true
-    },
-
-    "custom/audio_idle_inhibitor": {
-		"format": "{icon}",
-		"exec": "sway-audio-idle-inhibit --dry-print-both-waybar",
-		"exec-if": "which sway-audio-idle-inhibit",
+    "custom/lizzy": {
+		"format": "<span color='#25be6a'>{icon}</span>  {}",
+		"exec": "lizzy --format ' {{title}} - {{artist}}' --autotoggle --mediaplayer spotify",
 		"return-type": "json",
 		"format-icons": {
-			"output": "󰐌",
-			"input": "",
-			"output-input": "  ",
-			"none": ""
-		}
+		  "Playing": "",
+		  "Paused": ""
+		},
+		"max-length": 45,
+		"on-click":"playerctl --player=spotify play-pause",
+		"on-scroll-up":"playerctl --player=spotify next",
+		"on-scroll-down":"playerctl --player=spotify previous"
 	},
-
-
-    "custom/spotify": {
-        "exec": "/usr/bin/python3 .config/hypr/scripts//mediaplayer.py --player spotify",
-        "format": "{}  󰓇",
-        "return-type": "json",
-        "on-click": "playerctl next",
-        "on-scroll-up": "playerctl previous",
-        "on-click-right": "playerctl stop"
-    },
-
-    "custom/weather": {
-        "exec": "python ~/.config/hypr/scripts/weather.py",
-        "restart-interval": 300,
-        "return-type": "json",
-        "on-click": "xdg-open https://weather.com/en-IN/weather/today/l/$(location_id)"
-        // "format-alt": "{alt}",
-    },
-
-    "tray": {
-        "icon-size": 14,
-        "spacing": 8,
-        "show-passive-items": false
-    },
-    "clock": {
-        // "timezone": "America/New_York",
-        "tooltip": false,
-        "interval": 60,
-        "format": "{:%H:%M}",
-        "max-length": 25,
-        "on-click": "sleep 0.1; ~/.config/hypr/scripts/wall"
-    },
-    "cpu": {
-        "interval":1,
-        "format": "{icon0} {icon1} {icon2} {icon3}",
-        "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
-        "on-click": "sleep 0.1; foot  htop"
-
-    },
-    "memory": {
-        "format": "{percentage}% 󰇖",
-        "interval": 1,
-        "on-click": "sleep 0.1; foot --class system_monitor -e htop",
-        "max-lenght": 35
-    },
-    "backlight": {
-        // "device": "acpi_video1",
-        "format": "{percent} {icon}",
-        "on-scroll-down": "sleep 0.1; ~/.config/hypr/scripts/brightness --inc",
-        "on-scroll-up": "sleep 0.1; ~/.config/hypr/scripts/brightness --dec",
-        "format-icons": ["󰃚", "󰃚", "󰃛", "󰃜", "󰃜", "󰃝", "󰃞", "󰃟", "󰃠"]
-    },
-    "battery": {
-        "states": {
-            "warning": 50,
-            "critical": 20
-        },
-        "format": "{capacity} {icon}",
-        "format-charging": "{capacity} 󰂅",
-        "format-plugged": "{capacity} {icon}",
-         "format-good": "", // An empty format will hide the module
-         "format-full": "󰁹",
-        "format-icons": ["󰂎","󰁺","󰁻","󰁼","󰁽","󰁾","󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
-        "on-click": "sleep 0.1; ~/.config/hypr/scripts/wofi-power.sh",
-    },
-    "pulseaudio": {
-        "format": "{volume} {icon}",
-        "format-bluetooth": "{volume} {icon}",
-        "format-bluetooth-muted": "off 󰋋",
-        "format-muted": "󰝟",
-        "format-icons": {
-            "headphone": "󰋋",
-            "hands-free": "",
-            "headset": "󰋋",
-            "phone": "󰄜",
-            "portable": "",
-            "car": "󰸛",
-            "default": ["󰕿", "󰖀", "󰕾"]
-        },
-        "on-click-right": "sleep 0.1 && pavucontrol",
-      "on-click": "sleep 0.1 && ~/.config/hypr/scripts/volume --toggle",
-      "on-scroll-down": "sleep 0.1 && ~/.config/hypr/scripts/volume --inc",
-      "on-scroll-up": "sleep 0.1 && ~/.config/hypr/scripts/volume --dec",
-    },
-    "network": {
-        "interface": "wlp2s0",
-        "on-click": "sleep 0.1 && wofi-wifi-menu",
-        "format": "{ifname}",
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ifname} ",
-        "format-disconnected": "", //An empty format will hide the module.
-        "format-disconnected": "",
-        "tooltip-format": "{ifname}",
-        "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
-        "tooltip-format-ethernet": "{ifname} ",
-        "tooltip-format-disconnected": "Disconnected",
-        "max-length": 50
-    },
-    "custom/notification": {
-        "tooltip": false,
+	
+	"backlight":{
+		"format": "<span color='#8ccf7e'>󱩖 </span>  {percent}%   ",
+		"device": "intel_backlight",
+		"on-scroll-down": "brightnessctl s 5%-",
+        "on-scroll-up": "brightnessctl s +5%"
+	},
+	
+	"idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
-          "notification": "󱅫",
-          "none": "󰂚",
-          "dnd-notification": "󰂛",
-          "dnd-none": "󰂛",
-          "inhibited-notification": "󰂞",
-          "inhibited-none": "󰂛",
-          "dnd-inhibited-notification": "󰂞",
-          "dnd-inhibited-none": ""
+            "activated": "",
+            "deactivated": ""
         },
-        "return-type": "json",
-        "exec-if": "which swaync-client",
-        "exec": "swaync-client -swb",
-        "on-click": "sleep 0.1s && swaync-client -t -sw",
-      //  "on-click-right": "sleep 0.1 && swaync-client -d -sw",
-        "escape": true
-      }
-},
-
-"custom/updates": {
-    "format": "{} {icon}",
-    "return-type": "json",
-    "format-icons": {
-        "has-updates": "󱍷",
-        "updated": "󰂪"
+        "tooltip": "true"
     },
-    "exec-if": "which waybar-module-pacman-updates",
-    "exec": "waybar-module-pacman-updates"
+	
+	"wireplumber": {
+		    "on-click": "pavucontrol",
+		    "on-click-right": "amixer sset Master toggle 1>/dev/null",
+		    "format": "<span foreground='#e5c76b'>{icon}</span>  {volume}%",
+		    "format-muted": "<span foreground='#e5c76b'></span>  Muted",
+		    "format-icons": {
+		        "headphone": " ",
+		        "hands-free": " ",
+		        "headset": " ",
+		        "phone": " ",
+		        "portable": " ",
+		        "car": " ",
+		        "default": [" ", " ", " "]
+		    },
+		},
+        
+    "network": {
+        "format-wifi": "<span color='#67b0e8'></span>   {essid}  ",
+        "format-ethernet": "<span color='#67b0e8'></span>   {ifname}",
+        "format-linked": "<span color='#67b0e8'></span>  {ifname} (No IP)",
+        "format": "<span color='#67b0e8'></span>  Connected",
+        "format-disconnected": "<span color='#67b0e8'></span>  Disconnected",
+        "interval": 60,
+        "on-click":"~/.config/rofi/rofi-wifi-menu.sh"
+    },
+	"clock": {
+		"format": "<span color='#ee5396'></span>  {:%A %e %B}"
+	},
+	"clock#time": {
+		"format": "<span color='#e57474'></span>  {:%H:%M}"
+	},
+	"battery": {
+        "interval": 2,
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "<span color='#8ccf7e'>{icon}</span>   {capacity}%",
+        "format-charging": "<span color='#8ccf7e'></span>  {capacity}%",
+        "format-plugged": "<span color='#8ccf7e'></span>  {capacity}%",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    "bluetooth":{
+    	"format-on": "<span color='#e57474'></span>  Turned On",
+    	"format-off": "<span color='#e57474'></span>  Turned Off",
+    	"format-disabled": "<span color='#e57474'></span>  Disabled",
+    	"format-connected": "<span color='#e57474'></span> Connected",
+    	"format": "<span color='#e57474'></span> Disabled",
+    	"on-click":"blueman-manager &"
+    },
+    
+    "custom/power":{
+    	"format":"",
+    	"on-click":"~/.config/rofi/powermenu/type-4/powermenu.sh"
+    },
+    "custom/notification":{
+    	"format": "󱅫",
+    	"on-click": "swaync-client -t -sw"
+    }
+    
 }
-
