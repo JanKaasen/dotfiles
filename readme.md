@@ -52,3 +52,4 @@ $ stow .
 
 Swaync config taken from https://github.com/mooncoffee1/MyHyprlandRice
 Waybar config from https://github.com/LoneWolf4713/seraphic.dotfiles/tree/main
+Rofi config from https://github.com/adi1090x/rofi/tree/master
