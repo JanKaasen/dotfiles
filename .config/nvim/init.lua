@@ -573,14 +573,27 @@ require('lazy').setup({
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
       require('mason-lspconfig').setup {
+        ensure_installed = {},
+        automatic_installation = true,
         handlers = {
-          function(server_name)
-            local server = servers[server_name] or {}
-            -- This handles overriding only values explicitly passed
-            -- by the server configuration above. Useful when disabling
-            -- certain features of an LSP (for example, turning off formatting for tsserver)
-            server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-            require('lspconfig')[server_name].setup(server)
+          jdtls = function()
+            require('java').setup {}
+
+            require('lspconfig').jdtls.setup {
+              settings = {
+                java = {
+                  configuration = {
+                    runtimes = {
+                      {
+                        name = 'JavaSE-21',
+                        path = '/usr/lib/jvm/java-21-openjdk/',
+                        default = true,
+                      },
+                    },
+                  },
+                },
+              },
+            }
           end,
         },
       }
@@ -811,7 +824,7 @@ require('lazy').setup({
     main = 'nvim-treesitter.configs', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
+      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'java', 'python' },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
